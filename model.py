@@ -12,7 +12,7 @@ with open('./test/driving_log.csv') as csvfile:
 
 images = []
 measurements = []
-for lines in lines:
+for line in lines:
     for i in range(3):
         source_path = line[i]
         filename = source_path.split('/')[-1]
@@ -39,6 +39,9 @@ for image, measurement in zip(images, measurements):
 
 X_train = np.array(augmented_images)
 y_train = np.array(augmented_measurements)
+
+plt.hist(y_train, bins=50)
+plt.savefig('hist.png')
 
 from keras.models import Sequential, Model
 from keras.layers import Flatten, Dense, Lambda, Cropping2D, Dropout
@@ -67,7 +70,3 @@ model.fit(X_train, y_train, validation_split=0.2, shuffle=True, nb_epoch=3)
 
 model.save('model.h5')
 print('model saved')
-
-plt.hist(y_train, bins=50)
-plt.savefig('hist.png')
-print('done')
