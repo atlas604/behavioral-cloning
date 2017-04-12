@@ -5,9 +5,7 @@
 Overview
 ---
 
-#### Track 1
-
-https://youtu.be/Qs_IcKohh-w
+#### Track 1: https://youtu.be/Qs_IcKohh-w
 
 In this project, we use a convolutional neural network (CNN) to train a self-driving through behavioral cloning.  
 
