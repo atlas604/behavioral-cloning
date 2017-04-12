@@ -41,11 +41,20 @@ The model uses an adam optimizer, which uses an adaptive approach to apply a var
 Training Strategy
 ---
 
+### Initial Approach
+
 It was first important to establish a working model then improvements could be made from there.  Out of several CNNs I've tested, the NVIDIA CNN has shown superior pattern recognition with the default training data provided.  
+
+
+### Data Collection
 
 At this point I decided to record better and cleaner training data to help clone good driving behavior.  Through many iterations of testing data gathered, I found driving the car at low speeds helps record better angles for steering.  When driving at maximum speeds (30mph) the car doesn't need to steer as much because it covers much more of the track at a much faster pace.  It was also important to have very smooth steering on every turn so the model would have better a approach for every curve.  Using a controller axis to implement steering and throttle was a crucial factor to my success.  At this point I believe I could implement a very successful model with minimal data collection.  About 1.5 laps of data were captured with center steering, and some recovery steering and the rest of the data was augmented.  
 
+### Normalization
+
 Since the model uses images to train pattern recognition, it was important to convert the colors to RGB from BGR in the normalization process.  This was done once the images were read via cv2 (model.py line 23).
+
+### Generalization
 
 To help the model generalize, the training images and measurements were flipped; thus doubling the amount of data collected (starting at model.py line 31).  The first track mainly consists of left turns. Therefore, by flipping the data we train the model to deal with right turns as well.  
 
