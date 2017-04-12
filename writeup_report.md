@@ -27,7 +27,7 @@ I use Keras to implement the NVIDIA deep learning CNN model for self-driving car
 
 In the first layer, the model  normalizes the data and augments the images to see just the road and the lane lines, removing unnecessary background visuals.  
 
-The convolution layers perform feature extraction. The values are transferred from the NVIDIA design as they have been through many iterations of empirical testing.  There are five convolutional layers first consisting of a 5x5 kernel and 2x2 strides with ELU activation (starting at model.py line 58).  The last two convolutional layers uses a 3x3 kernel and 1x1 strides.  The model ends with three fully connected layers that controls steering.  
+The convolution layers perform feature extraction. The values are transferred from the NVIDIA design as they have been through many iterations of empirical testing.  There are five convolutional layers first consisting of a 5x5 kernel and 2x2 strides with ELU activation (model.py starting at line 58).  The last two convolutional layers uses a 3x3 kernel and 1x1 strides.  The model ends with three fully connected layers that controls steering.  
 
 ELU (Exponential linear unit) is used instead or ReLU (Rectified linear unit) for non-linearity and reduction in bias, since ReLU outputs will always produce positive values for activation. ELU performed slightly better through thorough testing.   
 
@@ -55,11 +55,11 @@ Since the model uses images to train pattern recognition, it was important to co
 
 #### Camera Angles
 
-Center, Left and Right camera angles were used to help the model with pattern recognition.  A correction of +/- 0.2 to account for measurements in distortion.  
+Center, Left and Right camera angles were used to help the model with pattern recognition (model.py starting at line 13).  A correction of +/- 0.2 was used to account for measurements in distortion.  
 
 #### Generalization
 
-To help the model generalize, the training images and measurements were flipped; thus doubling the amount of data collected (starting at model.py line 31).  The first track mainly consists of left turns. Therefore, by flipping the data we train the model to deal with right turns as well.  
+To help the model generalize, the training images and measurements were flipped; thus doubling the amount of data collected (model.py starting at line 31).  The first track mainly consists of left turns. Therefore, by flipping the data we train the model to deal with right turns as well.  
 
 Here is a visualization of the aggregate angles collected and augmented by the model.  
 
