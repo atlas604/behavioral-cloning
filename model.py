@@ -10,6 +10,7 @@ with open('./test/driving_log.csv') as csvfile:
     for line in reader:
         lines.append(line)
 
+# importing data from three different cameras (center, left and right)
 images = []
 measurements = []
 for line in lines:
@@ -27,6 +28,7 @@ for line in lines:
     measurements.append(measurement+correction)
     measurements.append(measurement-correction)
 
+# creating a flipped view of the track
 augmented_images = []
 augmented_measurements =[]
 for image, measurement in zip(images, measurements):
@@ -40,6 +42,7 @@ for image, measurement in zip(images, measurements):
 X_train = np.array(augmented_images)
 y_train = np.array(augmented_measurements)
 
+# visualization of aggregate turning angles
 plt.hist(y_train, bins=50)
 plt.savefig('hist.png')
 
@@ -48,7 +51,7 @@ from keras.layers import Flatten, Dense, Lambda, Cropping2D, Dropout
 from keras.layers.convolutional import Convolution2D
 from keras.layers.pooling import MaxPooling2D
 
-# nvidia model with dropout implementation
+# nvidia network architecture with dropout implementation
 model = Sequential()
 model.add(Lambda(lambda x: (x / 255.0) - 0.5, input_shape=(160,320,3)))
 model.add(Cropping2D(cropping=((70,25), (0,0))))
