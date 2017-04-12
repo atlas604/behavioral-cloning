@@ -53,6 +53,10 @@ At this point I decided to record better and cleaner training data to help clone
 
 Since the model uses images to train pattern recognition, it was important to convert the colors to RGB from BGR in the normalization process.  This was done once the images were read via cv2 (model.py line 23).
 
+#### Camera Angles
+
+Center, Left and Right camera angles were used to help the model with pattern recognition.  A correction of +/- 0.2 to account for measurements in distortion.  
+
 #### Generalization
 
 To help the model generalize, the training images and measurements were flipped; thus doubling the amount of data collected (starting at model.py line 31).  The first track mainly consists of left turns. Therefore, by flipping the data we train the model to deal with right turns as well.  
