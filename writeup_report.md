@@ -28,22 +28,22 @@ Simulator: https://github.com/udacity/self-driving-car-sim
 Model Architecture
 ---
 
- Layer            |  Feature     | Kernel Size |  Strides   | Activation | Padding |
-------------------|------------- |-------------|------------|------------|---------|
-Input             | (160,320,3)  |             |            |            |
+ Layer            |  Feature     | Kernel Size |  Strides   | Activation | Padding | Type |
+------------------|------------- |-------------|------------|------------|---------|------|
+Input             | (160,320,3)  |             |            |            |         |
 Normalization (Lambda x)     | (x/255) - 0.5      |             |            |            |
 Cropping2D        | (65,15),(0,0)|             |            |            |
-Convolution2D     | Filter: 24   |    5x5      |    2x2     |   elu      |   Same
-Convolution2D     | Filter: 36   |    5x5      |    2x2     |   elu      |   Same
-Convolution2D     | Filter: 48   |    5x5      |    2x2     |   elu      |   Same
-Convolution2D     | Filter: 64   |    3x3      |    None    |   elu      |   Same
-Convolution2D     | Filter: 64   |    3x3      |    None    |   elu      |   Same
+Convolution2D     | Filter: 24   |    5x5      |    2x2     |   elu      |   Same  | Convolutional |
+Convolution2D     | Filter: 36   |    5x5      |    2x2     |   elu      |   Same  | Convolutional |
+Convolution2D     | Filter: 48   |    5x5      |    2x2     |   elu      |   Same  | Convolutional |
+Convolution2D     | Filter: 64   |    3x3      |    None    |   elu      |   Same  | Convolutional |
+Convolution2D     | Filter: 64   |    3x3      |    None    |   elu      |   Same  | Convolutional |
 Dropout           | 0.5          |             |            |   
 Flatten           |              |             |            |
-Dense             | Neurons: 100 |
-Dense             | Neurons: 50  |
-Dense             | Neurons: 10  |
-Dense             | Neurons: 1 (Output)|
+Dense             | Neurons: 100 |             |            |            |         | Fully Connected |
+Dense             | Neurons: 50  |             |            |            |         | Fully Connected |
+Dense             | Neurons: 10  |             |            |            |         | Fully Connected |
+Dense             | Neurons: 1   |             |            |            |         | Output
 
 
 I use Keras to implement the NVIDIA deep learning CNN model for self-driving cars.  More information about the NVIDIA model can be found here: https://arxiv.org/pdf/1604.07316v1.pdf.
