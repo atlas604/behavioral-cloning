@@ -19,11 +19,11 @@ My project includes the following files:
 
 A video of the car driving successfully on track 1 in autonomous mode is provided in the link above.   
 
-Simulator link: https://github.com/udacity/self-driving-car-sim
-
 Recommended simulator settings to run the model:
 * Screen resolution: 1280 x 960 (Windowed)
 * Graphics quality: Fantastic
+
+Simulator: https://github.com/udacity/self-driving-car-sim
 
 Model Architecture
 ---
