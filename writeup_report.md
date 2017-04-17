@@ -19,23 +19,48 @@ My project includes the follow files:
 
 A video of the car driving successfully on track 1 in autonomous mode is provided in the link above.   
 
+Simulator link: https://github.com/udacity/self-driving-car-sim
+
+Recommended simulator settings to run the model:
+* Screen resolution: 1280 x 960 (Windowed)
+* Graphics quality: Fantastic
 
 Model Architecture
 ---
 
+ Layer            |  Feature    | Kernel Size |  Strides   | Activation |
+------------------|-------------|-------------|------------|------------|
+Input (160,320,3) |             |             |            |
+Normalization     | Lambda      |             |            |
+Cropping2D        |             |             |            |  
+Convolution2D     | 24 filter   |    5x5      |    2x2     |   elu
+Convolution2D     | 36 filter   |    5x5      |    2x2     |   elu
+Convolution2D     | 48 filter   |    5x5      |    2x2     |   elu
+Convolution2D     | 64 filter   |    3x3      |    None    |   elu
+Convolution2D     | 64 filter   |    3x3      |    None    |   elu
+Dropout           | 0.5         |             |            |   
+Flatten           |             |             |            |
+Dense             | 100 neurons |
+Dense             | 50 neurons  |
+Dense             | 10 neurons  |
+Dense             | 1 Output    |
+
+
 I use Keras to implement the NVIDIA deep learning CNN model for self-driving cars.  More information about the NVIDIA model can be found here: https://arxiv.org/pdf/1604.07316v1.pdf.
 
-In the first layer, the model  normalizes the data and augments the images to see just the road and the lane lines, removing unnecessary background visuals.  
+In the first layer, the model  normalizes the data and augments the images to visualize the road and the lane lines, removing unnecessary background visuals.  
 
 The convolution layers perform feature extraction. The values are transferred from the NVIDIA design as they have been through many iterations of empirical testing.  There are five convolutional layers first consisting of a 5x5 kernel and 2x2 strides with ELU activation (model.py starting at line 58).  The last two convolutional layers uses a 3x3 kernel and 1x1 strides.  The model ends with three fully connected layers that controls steering.  
 
 ELU (Exponential linear unit) is used instead or ReLU (Rectified linear unit) for non-linearity and reduction in bias, since ReLU outputs will always produce positive values for activation. ELU performed slightly better through thorough testing.   
 
-Dropout is implemented once after flattening the convolutional layers (model.py line 64) and a second time between the fully connected layers (model.py line 67) to help reduce overfitting.  The values and structure for dropout was inspired by the commaai train steering model (https://github.com/commaai/research/blob/master/train_steering_model.py) which has shown improvements in my model.  
+Dropout is implemented once after flattening the convolutional layers (model.py line 64) and a second time between the fully connected layers (model.py line 67) to help prevent overfitting.  The values and structure for dropout was inspired by the commaai train steering model (https://github.com/commaai/research/blob/master/train_steering_model.py) which has shown improvements in my model.  Implementing dropout between the convolutional layers made the model underperform by quite a bit.  I've tried adjusting it with different values, new data and various epochs and iterations but the model still wasn't able to perform optimally.  
 
 The model uses an adam optimizer, which uses an adaptive approach to apply a variable learning rate; thus having benefits of computational efficiency and minimal memory requirements (model.py line 71).
 
-3 epochs were sufficient to train the model. The training and validation loss produced are very low in each epoch which indicates characteristics of overfitting.
+3 epochs was chosen train the model because there was significant dimininishing returns in the improvement of loss anything beyond.   The loss of the validation and training set also begins to converge at this point and flattens indicating maximum performance.  
+
+The model might be slightly overfitting due to the very low loss values produced in each epoch iteration.  
 
 
 Training Strategy
