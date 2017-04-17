@@ -72,11 +72,11 @@ It was first important to establish a working model then improvements could be m
 
 #### Data Collection
 
-At this point I decided to record better and cleaner training data to help clone good driving behavior.  Through many iterations of testing data gathered, I found driving the car at low speeds helps record better angles for steering.  When driving at maximum speeds (30mph) the car doesn't need to steer as much because it covers much more of the track at a much faster pace.  It was also important to have very smooth steering on every turn so the model would have better a approach for every curve.  Using a controller axis to implement steering and throttle was a crucial factor to my success.  At this point I believe I could implement a very successful model with minimal data collection.  About 1.5 laps of data were captured with center steering, and some recovery steering and the rest of the data was augmented.  
+At this point I decided to record better and cleaner training data to help clone good driving behavior.  Through many iterations of testing data gathered, I found driving the car at low speeds helps record better angles for steering.  When driving at maximum speeds (30mph) the car doesn't need to steer as much because it covers much more of the track at a much faster pace.  It was also important to have very smooth steering on every turn so the model would have better a approach for every curve.  Using a controller axis to implement steering and throttle was a crucial factor to my success.  Laps of the track was recorded clockwise and counterclockwise including laps with recovery steering.
 
 #### Normalization
 
-Since the model uses images to train pattern recognition, it was important to convert the colors to RGB from BGR in the normalization process.  This was done once the images were read via cv2 (model.py line 23).
+Since the model uses images to train pattern recognition, it was important to convert the colors to RGB from BGR in the normalization process.  
 
 #### Camera Angles
 
@@ -86,10 +86,19 @@ Center, Left and Right camera angles were used to help the model with pattern re
 
 To help the model generalize, the training images and measurements were flipped; thus doubling the amount of data collected (model.py starting at line 31).  The first track mainly consists of left turns. Therefore, by flipping the data we train the model to deal with right turns as well.  
 
-Here is a visualization of the aggregate angles collected and augmented by the model.  
+#### Visualization
 
-<img src="hist.png">
+Aggregate steering angles distribution including augmentation:
 
+<img src="./examples/hist.png">
+
+Center camera image recorded during training:
+
+<img src="./examples/center.jpg">
+
+Cropped camera image used for input:
+
+<img src="./examples/cropped.jpg">
 
 
 
