@@ -28,16 +28,16 @@ Simulator: https://github.com/udacity/self-driving-car-sim
 Model Architecture
 ---
 
- Layer            |  Feature     | Kernel Size |  Strides   | Activation |
-------------------|------------- |-------------|------------|------------|
-Input             | (160,320,3)  |             |            |
-Normalization     | Lambda       |             |            |
-Cropping2D        | (65,15),(0,0)|             |            |  
-Convolution2D     | 24 filter    |    5x5      |    2x2     |   elu
-Convolution2D     | 36 filter    |    5x5      |    2x2     |   elu
-Convolution2D     | 48 filter    |    5x5      |    2x2     |   elu
-Convolution2D     | 64 filter    |    3x3      |    None    |   elu
-Convolution2D     | 64 filter    |    3x3      |    None    |   elu
+ Layer            |  Feature     | Kernel Size |  Strides   | Activation | Padding |
+------------------|------------- |-------------|------------|------------|---------|
+Input             | (160,320,3)  |             |            |            |
+Normalization     | Lambda       |             |            |            |
+Cropping2D        | (65,15),(0,0)|             |            |            |
+Convolution2D     | 24 filter    |    5x5      |    2x2     |   elu      |   Same
+Convolution2D     | 36 filter    |    5x5      |    2x2     |   elu      |   Same
+Convolution2D     | 48 filter    |    5x5      |    2x2     |   elu      |   Same
+Convolution2D     | 64 filter    |    3x3      |    None    |   elu      |   Same
+Convolution2D     | 64 filter    |    3x3      |    None    |   elu      |   Same
 Dropout           | 0.5          |             |            |   
 Flatten           |              |             |            |
 Dense             | 100 neurons  |
