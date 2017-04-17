@@ -5,13 +5,13 @@
 Overview
 ---
 
-#### Track 1: https://youtu.be/Qs_IcKohh-w
+#### Track 1 Demonstration: https://youtu.be/Qs_IcKohh-w
 
 In this project, we use a convolutional neural network (CNN) to train a self-driving through behavioral cloning.  
 
 The model learns to steer based on the camera images and steering angle data collected from manually driving in the simulator.  
 
-My project includes the follow files:
+My project includes the following files:
 
 * model.py containing the script to create and train the model
 * drive.py for driving the car in autonomous model
