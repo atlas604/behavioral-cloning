@@ -28,22 +28,22 @@ Recommended simulator settings to run the model:
 Model Architecture
 ---
 
- Layer            |  Feature    | Kernel Size |  Strides   | Activation |
-------------------|-------------|-------------|------------|------------|
-Input (160,320,3) |             |             |            |
-Normalization     | Lambda      |             |            |
-Cropping2D        |             |             |            |  
-Convolution2D     | 24 filter   |    5x5      |    2x2     |   elu
-Convolution2D     | 36 filter   |    5x5      |    2x2     |   elu
-Convolution2D     | 48 filter   |    5x5      |    2x2     |   elu
-Convolution2D     | 64 filter   |    3x3      |    None    |   elu
-Convolution2D     | 64 filter   |    3x3      |    None    |   elu
-Dropout           | 0.5         |             |            |   
-Flatten           |             |             |            |
-Dense             | 100 neurons |
-Dense             | 50 neurons  |
-Dense             | 10 neurons  |
-Dense             | 1 Output    |
+ Layer            |  Feature     | Kernel Size |  Strides   | Activation |
+------------------|------------- |-------------|------------|------------|
+Input             | (160,320,3)  |             |            |
+Normalization     | Lambda       |             |            |
+Cropping2D        | (65,15),(0,0)|             |            |  
+Convolution2D     | 24 filter    |    5x5      |    2x2     |   elu
+Convolution2D     | 36 filter    |    5x5      |    2x2     |   elu
+Convolution2D     | 48 filter    |    5x5      |    2x2     |   elu
+Convolution2D     | 64 filter    |    3x3      |    None    |   elu
+Convolution2D     | 64 filter    |    3x3      |    None    |   elu
+Dropout           | 0.5          |             |            |   
+Flatten           |              |             |            |
+Dense             | 100 neurons  |
+Dense             | 50 neurons   |
+Dense             | 10 neurons   |
+Dense             | 1 neuron (Output)|
 
 
 I use Keras to implement the NVIDIA deep learning CNN model for self-driving cars.  More information about the NVIDIA model can be found here: https://arxiv.org/pdf/1604.07316v1.pdf.
