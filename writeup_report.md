@@ -88,10 +88,6 @@ To help the model generalize, the training images and measurements were flipped;
 
 #### Visualization
 
-Aggregate steering angles distribution including augmentation:
-
-<img src="./examples/hist.png">
-
 Center camera image recorded during training:
 
 <img src="./examples/center.jpg">
@@ -100,7 +96,9 @@ Cropped camera image used for input:
 
 <img src="./examples/cropped.jpg">
 
+Steering angles distribution including augmentation:
 
+<img src="./examples/hist.png">
 
 Evaluation
 ---
