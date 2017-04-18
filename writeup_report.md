@@ -30,18 +30,19 @@ Model Architecture
 
  Layer            | Feature     |Kernel Size| Strides | Activation | Padding| Type |
 ------------------|-------------|-----------|---------|------------|--------|------|
-**Input**         |(160,320,3)  |           |         |            |        |Input|
-**Normalization** |Lambda       |           |         |            |        |Preprocess|
-**Cropping2D**    |(65,15),(0,0)|           |         |            |        |Preprocess|
-**Convolution2D** |Filter: 24   |    5x5    |   2x2   |   elu      |   Same |Convolutional|
-**Convolution2D** |Filter: 36   |    5x5    |   2x2   |   elu      |   Same |Convolutional|
-**Convolution2D** |Filter: 48   |    5x5    |   2x2   |   elu      |   Same |Convolutional|
-**Convolution2D** |Filter: 64   |    3x3    |   None  |   elu      |   Same |Convolutional|
-**Convolution2D** |Filter: 64   |    3x3    |   None  |   elu      |   Same |Convolutional|
+**Input**         |(160,320,3)  |           |         |            |        |Input
+**Normalization** |Lambda       |           |         |            |        |Preprocess
+**Cropping2D**    |(65,15),(0,0)|           |         |            |        |Preprocess
+**Convolution2D** |Filter: 24   |    5x5    |   2x2   |   elu      |   Same |Convolutional
+**Convolution2D** |Filter: 36   |    5x5    |   2x2   |   elu      |   Same |Convolutional
+**Convolution2D** |Filter: 48   |    5x5    |   2x2   |   elu      |   Same |Convolutional
+**Convolution2D** |Filter: 64   |    3x3    |   None  |   elu      |   Same |Convolutional
+**Convolution2D** |Filter: 64   |    3x3    |   None  |   elu      |   Same |Convolutional
+**Flatten**       |             |           |         |            |        |
 **Dropout**       |0.5          |           |         |            |        |
-**Dense**         |Neurons: 100 |           |         |            |        |Fully Connected|
-**Dense**         |Neurons: 50  |           |         |            |        |Fully Connected|
-**Dense**         |Neurons: 10  |           |         |            |        |Fully Connected|
+**Dense**         |Neurons: 100 |           |         |            |        |Fully Connected
+**Dense**         |Neurons: 50  |           |         |            |        |Fully Connected
+**Dense**         |Neurons: 10  |           |         |            |        |Fully Connected
 **Dense**         |Neurons: 1   |           |         |            |        |Output
 
 
