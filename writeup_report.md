@@ -72,7 +72,7 @@ It was first important to establish a working model then improvements could be m
 
 #### Data Collection
 
-At this point I decided to record better and cleaner training data to help clone good driving behavior.  Through many iterations of testing data gathered, I found driving the car at low speeds helps record better angles for steering.  When driving at maximum speeds (30mph) the car doesn't need to steer as much because it covers much more of the track at a much faster pace.  It was also important to have very smooth steering on every turn so the model would have better a approach for every curve.  Using a controller axis to implement steering and throttle was a crucial factor to my success.  Laps of the track was recorded clockwise and counterclockwise including laps with recovery steering.
+At this point I learned that it was very important record better and cleaner training data to help clone good driving behavior.  Through many iterations of testing data gathered, I found driving the car at low speeds helps record better angles for steering.  When driving at maximum speeds (30mph) the car doesn't need to steer as much because it covers much more of the track at a much faster pace.  It was also important to have very smooth steering on every turn so the model would have better a approach for every curve.  Using a controller axis to implement steering and throttle was a crucial factor to my success.  Having too much data going straight would over-train the model to go straight.  Thus, I believe its more important to have quality which can be replicated with augmentation.  Laps of the track was recorded clockwise and counterclockwise including laps with recovery steering.
 
 #### Normalization
 
@@ -103,6 +103,6 @@ Steering angles distribution including augmentation:
 Evaluation
 ---
 
-The NVIDIA deep learning CNN is a very powerful model that requires very minimal data to operate a self driving car successfully.  Given the simplistic design of track 1, it was very easy to train the model and drive in it successfully.  
+The NVIDIA deep learning CNN is a very powerful model that requires very minimal data to operate a self driving car successfully.  Given the simplistic design of track 1, it wasn't too difficult to train the model and drive in it successfully.  
 
-However, if the car were to start off the road, I believe the current model won't have sufficient data to successfully recover.  To train this, additional data will be required.  Nevertheless, for all normal circumstances, the model is able to maintain the car in the center of the road at all times, albeit at slow speeds.
+However, the model is only as good as how you train it, meaning, with poor data (bad driving behavior) or significant bias in steering angles (having too much data going straight), the model would learn to drive poorly or go straight too much even during turns.  To alleviate this issue, we may implement data processing techniques to aim for a more even distriubtion of steering angles, throttle control and breaking patterns.  
