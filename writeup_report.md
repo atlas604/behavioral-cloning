@@ -30,7 +30,7 @@ Model Architecture
 
  Layer            |  Feature     | Kernel Size |  Strides   | Activation | Padding | Type |
 ------------------|------------- |-------------|------------|------------|---------|------|
-*Input*             | (160,320,3)  |             |            |            |         | Input|
+**Input**             | (160,320,3)  |             |            |            |         | Input|
 Normalization     | Lambda       |             |            |            |         | Preprocess|
 Cropping2D        | (65,15),(0,0)|             |            |            |         | Preprocess|
 Convolution2D (1) | Filter: 24   |    5x5      |    2x2     |   elu      |   Same  | Convolutional |
