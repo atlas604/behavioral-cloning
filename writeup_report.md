@@ -33,11 +33,11 @@ Model Architecture
 Input             | (160,320,3)  |             |            |            |         | Input|
 Normalization     | Lambda       |             |            |            |         | Preprocess|
 Cropping2D        | (65,15),(0,0)|             |            |            |         | Preprocess|
-Convolution2D     | Filter: 24   |    5x5      |    2x2     |   elu      |   Same  | Convolutional |
-Convolution2D     | Filter: 36   |    5x5      |    2x2     |   elu      |   Same  | Convolutional |
-Convolution2D     | Filter: 48   |    5x5      |    2x2     |   elu      |   Same  | Convolutional |
-Convolution2D     | Filter: 64   |    3x3      |    None    |   elu      |   Same  | Convolutional |
-Convolution2D     | Filter: 64   |    3x3      |    None    |   elu      |   Same  | Convolutional |
+Convolution2D (1) | Filter: 24   |    5x5      |    2x2     |   elu      |   Same  | Convolutional |
+Convolution2D (2) | Filter: 36   |    5x5      |    2x2     |   elu      |   Same  | Convolutional |
+Convolution2D (3) | Filter: 48   |    5x5      |    2x2     |   elu      |   Same  | Convolutional |
+Convolution2D (4) | Filter: 64   |    3x3      |    None    |   elu      |   Same  | Convolutional |
+Convolution2D (5) | Filter: 64   |    3x3      |    None    |   elu      |   Same  | Convolutional |
 Dropout           | 0.5          |             |            |            |         |
 Flatten           |              |             |            |            |         |
 Dense             | Neurons: 100 |             |            |            |         | Fully Connected |
