@@ -50,7 +50,7 @@ Model Architecture
 
 I use Keras to implement the NVIDIA deep learning CNN model for self-driving cars.  More information about the NVIDIA model can be found here: https://arxiv.org/pdf/1604.07316v1.pdf.
 
-In the first layer, the model  normalizes the data and augments the images to visualize the road and the lane lines, removing unnecessary background visuals.  
+In the first layer (model.py line 73-74), the model  normalizes the data and augments the images to visualize the road and the lane lines, removing unnecessary background visuals.  
 
 The convolution layers perform feature extraction. The values are transferred from the NVIDIA design as they have been through many iterations of empirical testing.  There are five convolutional layers first consisting of a 5x5 kernel and 2x2 strides with ELU activation.  The last two convolutional layers uses a 3x3 kernel and 1x1 strides.  The model ends with three fully connected layers that controls steering.  
 
@@ -60,9 +60,9 @@ Dropout is implemented once after flattening the convolutional layers and a seco
 
 Implementing dropout between the convolutional layers made the model underperform by quite a bit.  I've tried adjusting it with different parameters, adding new data and testing various epochs and iterations of other parameters but the model still did not seem to perform optimally.  
 
-The model uses an adam optimizer, which uses an adaptive approach to apply a variable learning rate; thus having benefits of computational efficiency and minimal memory requirements.
+The model uses an adam optimizer (model.py line 88), which uses an adaptive approach to apply a variable learning rate; thus having benefits of computational efficiency and minimal memory requirements.
 
-4 epochs was chosen train the model because there was significant dimininishing returns in the improvement of loss anything beyond.   The loss of the validation and training set also begins to converge at this point and flattens indicating maximum performance.  
+Four epochs were chosen train the model because there was significant dimininishing returns in the improvement of loss anything beyond.  The loss of the validation and training set also begins to converge at this point and flattens indicating maximum performance.  
 
 Increasing the epochs can introduce unwanted overfitting of the model as the validation loss begins to rise after around 4 epochs as illustrated in this figure:
 
@@ -86,11 +86,11 @@ Since the model uses images to train pattern recognition, it was important to co
 
 #### Camera Angles
 
-Center, Left and Right camera angles were used to help the model with pattern recognition (model.py starting at line 13).  A correction of +/- 0.2 was used to account for measurements in distortion.  
+Center, Left and Right camera angles were used to help the model with pattern recognition (model.py starting at line 26).  A correction of +/- 0.2 was used to account for measurements in distortion.  
 
 #### Generalization
 
-To help the model generalize, the training images and measurements were flipped; thus doubling the amount of data collected.  The first track mainly consists of left turns. Therefore, by flipping the data we train the model to deal with right turns as well.  
+To help the model generalize, the training images and measurements were flipped and added to the data set; thus doubling the amount of data collected.  The first track mainly consists of left turns. Therefore, by flipping the data we train the model to learn to approach right turns as well.  
 
 #### Visualization
 
