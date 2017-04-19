@@ -20,8 +20,6 @@ My project includes the following files:
 * model.h5 containing a trained convolution neural network
 * video.mp4 python generated video of the simulator
 
-A video of the car driving successfully on track 1 in autonomous mode is provided in the link above.   
-
 Recommended simulator settings to run the model:
 * Screen resolution: 1280 x 960 (Windowed)
 * Graphics quality: Fantastic
@@ -54,13 +52,15 @@ I use Keras to implement the NVIDIA deep learning CNN model for self-driving car
 
 In the first layer, the model  normalizes the data and augments the images to visualize the road and the lane lines, removing unnecessary background visuals.  
 
-The convolution layers perform feature extraction. The values are transferred from the NVIDIA design as they have been through many iterations of empirical testing.  There are five convolutional layers first consisting of a 5x5 kernel and 2x2 strides with ELU activation (model.py starting at line 58).  The last two convolutional layers uses a 3x3 kernel and 1x1 strides.  The model ends with three fully connected layers that controls steering.  
+The convolution layers perform feature extraction. The values are transferred from the NVIDIA design as they have been through many iterations of empirical testing.  There are five convolutional layers first consisting of a 5x5 kernel and 2x2 strides with ELU activation.  The last two convolutional layers uses a 3x3 kernel and 1x1 strides.  The model ends with three fully connected layers that controls steering.  
 
 We apply ReLU (Rectified linear unit) activation for each convolutional layer to introduce non-linearity and reduction in bias, ReLU outputs will always produce positive values for activation. ELU (Exponential linear unit) may also be used in place of ReLU if negative output activation is desired.   
 
-Dropout is implemented once after flattening the convolutional layers (model.py line 64) and a second time between the fully connected layers (model.py line 67) to help prevent overfitting.  The values and structure for dropout was inspired by the commaai train steering model (https://github.com/commaai/research/blob/master/train_steering_model.py) which has shown improvements in my model.  Implementing dropout between the convolutional layers made the model underperform by quite a bit.  I've tried adjusting it with different values, new data and various epochs and iterations but the model still wasn't able to perform optimally.  
+Dropout is implemented once after flattening the convolutional layers and a second time between the fully connected layers to help prevent overfitting.  The values and structure for dropout was inspired by the commaai train steering model (https://github.com/commaai/research/blob/master/train_steering_model.py) which has shown improvements in my model.  
 
-The model uses an adam optimizer, which uses an adaptive approach to apply a variable learning rate; thus having benefits of computational efficiency and minimal memory requirements (model.py line 71).
+Implementing dropout between the convolutional layers made the model underperform by quite a bit.  I've tried adjusting it with different parameters, adding new data and testing various epochs and iterations of other parameters but the model still did not seem to perform optimally.  
+
+The model uses an adam optimizer, which uses an adaptive approach to apply a variable learning rate; thus having benefits of computational efficiency and minimal memory requirements.
 
 4 epochs was chosen train the model because there was significant dimininishing returns in the improvement of loss anything beyond.   The loss of the validation and training set also begins to converge at this point and flattens indicating maximum performance.  
 
@@ -74,11 +74,11 @@ Training Strategy
 
 #### Initial Approach
 
-It was first important to establish a working model then improvements could be made from there.  Out of several CNNs I've tested, the NVIDIA CNN has shown superior pattern recognition with the default training data provided.  
+It's important to first establish a working neural network, then improvements and adjustments can be carefully made from there.  Out of several CNNs I've tested, the NVIDIA CNN has shown superior pattern recognition with the default training data provided.  
 
 #### Data Collection
 
-At this point I learned that it was very important record better and cleaner training data to help clone good driving behavior.  Through many iterations of testing data gathered, I found driving the car at low speeds helps record better angles for steering.  When driving at maximum speeds (30mph) the car doesn't need to steer as much because it covers much more of the track at a much faster pace.  It was also important to have very smooth steering on every turn so the model would have better a approach for every curve.  Using a controller axis to implement steering and throttle was a crucial factor to my success.  Having too much data going straight would over-train the model to go straight.  Thus, I believe its more important to have quality which can be replicated with augmentation.  Laps of the track was recorded clockwise and counterclockwise including laps with recovery steering.
+At this point I learned that it was very important record better and cleaner training data to help clone good driving behavior.  Through many iterations of testing data gathered, I found driving the car at low speeds helps record better angles for steering.  When driving at maximum speeds (30mph) the car doesn't need to steer as much because it covers much more of the track at a much faster pace.  It was also important to have very smooth steering on every turn so the model would have better a approach for every curve.  Using a controller axis to implement steering and throttle was a crucial factor to my success.  Having too much data going straight would over-train the model to go straight.  Thus, its important to have quality data which can be increased with augmentation.  Laps of the track was recorded clockwise and counterclockwise including laps with recovery steering.
 
 #### Normalization
 
@@ -90,7 +90,7 @@ Center, Left and Right camera angles were used to help the model with pattern re
 
 #### Generalization
 
-To help the model generalize, the training images and measurements were flipped; thus doubling the amount of data collected (model.py starting at line 31).  The first track mainly consists of left turns. Therefore, by flipping the data we train the model to deal with right turns as well.  
+To help the model generalize, the training images and measurements were flipped; thus doubling the amount of data collected.  The first track mainly consists of left turns. Therefore, by flipping the data we train the model to deal with right turns as well.  
 
 #### Visualization
 
