@@ -78,8 +78,10 @@ def nvidia():
     model.add(Convolution2D(64,3,3,activation="relu"))
     model.add(Convolution2D(64,3,3,activation="relu"))
     model.add(Flatten())
+    model.add(Dropout(.2))
     model.add(Dense(100))
     model.add(Dense(50))
+    model.add(Dropout(.5))
     model.add(Dense(10))
     model.add(Dense(1))
 
