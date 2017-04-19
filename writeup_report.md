@@ -5,7 +5,9 @@
 Overview
 ---
 
-#### Track 1 Demonstration: https://youtu.be/Qs_IcKohh-w
+<img src="./examples/video.gif">
+
+#### Track 1 Full Demonstration: https://youtu.be/Qs_IcKohh-w
 
 In this project, we use a convolutional neural network (CNN) to train a self-driving through behavioral cloning.  
 
@@ -16,6 +18,7 @@ My project includes the following files:
 * model.py containing the script to create and train the model
 * drive.py for driving the car in autonomous model
 * model.h5 containing a trained convolution neural network
+* video.mp4 python generated video of the simulator
 
 A video of the car driving successfully on track 1 in autonomous mode is provided in the link above.   
 
@@ -39,9 +42,10 @@ Model Architecture
 **Convolution2D** |Filter: 64   |    3x3    |   None  |   elu      |   Same |Convolutional
 **Convolution2D** |Filter: 64   |    3x3    |   None  |   elu      |   Same |Convolutional
 **Flatten**       |             |           |         |            |        |
-**Dropout**       |0.5          |           |         |            |        |
+**Dropout**       |0.2          |           |         |            |        |
 **Dense**         |Neurons: 100 |           |         |            |        |Fully Connected
 **Dense**         |Neurons: 50  |           |         |            |        |Fully Connected
+**Dropout**       |0.5          |
 **Dense**         |Neurons: 10  |           |         |            |        |Fully Connected
 **Dense**         |Neurons: 1   |           |         |            |        |Output
 
@@ -52,15 +56,17 @@ In the first layer, the model  normalizes the data and augments the images to vi
 
 The convolution layers perform feature extraction. The values are transferred from the NVIDIA design as they have been through many iterations of empirical testing.  There are five convolutional layers first consisting of a 5x5 kernel and 2x2 strides with ELU activation (model.py starting at line 58).  The last two convolutional layers uses a 3x3 kernel and 1x1 strides.  The model ends with three fully connected layers that controls steering.  
 
-ELU (Exponential linear unit) is used instead or ReLU (Rectified linear unit) for non-linearity and reduction in bias, since ReLU outputs will always produce positive values for activation. ELU performed slightly better through thorough testing.   
+We apply ReLU (Rectified linear unit) activation for each convolutional layer to introduce non-linearity and reduction in bias, ReLU outputs will always produce positive values for activation. ELU (Exponential linear unit) may also be used in place of ReLU if negative output activation is desired.   
 
 Dropout is implemented once after flattening the convolutional layers (model.py line 64) and a second time between the fully connected layers (model.py line 67) to help prevent overfitting.  The values and structure for dropout was inspired by the commaai train steering model (https://github.com/commaai/research/blob/master/train_steering_model.py) which has shown improvements in my model.  Implementing dropout between the convolutional layers made the model underperform by quite a bit.  I've tried adjusting it with different values, new data and various epochs and iterations but the model still wasn't able to perform optimally.  
 
 The model uses an adam optimizer, which uses an adaptive approach to apply a variable learning rate; thus having benefits of computational efficiency and minimal memory requirements (model.py line 71).
 
-3 epochs was chosen train the model because there was significant dimininishing returns in the improvement of loss anything beyond.   The loss of the validation and training set also begins to converge at this point and flattens indicating maximum performance.  
+4 epochs was chosen train the model because there was significant dimininishing returns in the improvement of loss anything beyond.   The loss of the validation and training set also begins to converge at this point and flattens indicating maximum performance.  
 
-The model might be slightly overfitting due to the very low loss values produced in each epoch iteration.  
+Increasing the epochs can introduce unwanted overfitting of the model as the validation loss begins to rise after around 4 epochs as illustrated in this figure:
+
+<img src="./examples/loss-5-epochs.png">
 
 
 Training Strategy
@@ -88,13 +94,13 @@ To help the model generalize, the training images and measurements were flipped;
 
 #### Visualization
 
-Center camera image recorded during training:
+Examples of camera image captured and recorded by the simulator:
 
-<img src="./examples/center.jpg">
+<img src="./examples/camera.png">
 
-Cropped camera image used for input:
+Cropped visualization of camera image processed for input:
 
-<img src="./examples/cropped.jpg">
+<img src="./examples/cropped.png">
 
 Steering angles distribution including augmentation:
 
