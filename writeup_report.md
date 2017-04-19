@@ -111,4 +111,4 @@ Evaluation
 
 The NVIDIA deep learning CNN is a very powerful model that requires very minimal data to operate a self driving car successfully.  Given the simplistic design of track 1, it wasn't too difficult to train the model and drive in it successfully.  
 
-However, the model is only as good as how you train it, meaning, with poor data (bad driving behavior) or significant bias in steering angles (having too much data going straight), the model would learn to drive poorly or go straight too much even during turns.  To alleviate this issue, we may implement data processing techniques to aim for a more even distriubtion of steering angles, throttle control and breaking patterns.  
+However, the model is only as good as how you train it, meaning, with poor data (bad driving behavior) or significant bias in steering angles (having too much data going straight), the model would learn to drive poorly or go straight too often even during turns.  To alleviate this issue, we may implement data processing techniques to aim for a more even distribution of steering angles, throttle control and breaking patterns.  
