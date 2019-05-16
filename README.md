@@ -13,7 +13,7 @@ In this project, we use a convolutional neural network (CNN) to train a self-dri
 
 The model learns to steer based on the camera images and steering angle data collected from manually driving in the simulator.  
 
-My project includes the following files:
+The project includes the following files:
 
 * model.py containing the script to create and train the model
 * drive.py for driving the car in autonomous model
