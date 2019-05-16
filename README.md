@@ -48,7 +48,7 @@ Model Architecture
 **Dense**         |Neurons: 1   |           |         |            |        |Output
 
 
-I use Keras to implement the NVIDIA deep learning CNN model for self-driving cars.  More information about the NVIDIA model can be found here: https://arxiv.org/pdf/1604.07316v1.pdf.
+Keras is used to implement the NVIDIA deep learning CNN model for self-driving cars.  More information about the NVIDIA model can be found here: https://arxiv.org/pdf/1604.07316v1.pdf.
 
 In the first layer (model.py line 73-74), the model  normalizes the data and augments the images to visualize the road and the lane lines, removing unnecessary background visuals.  
 
