@@ -15,12 +15,12 @@ The model learns to steer based on the camera images and steering angle data col
 
 The project includes the following files:
 
-* model.py containing the script to create and train the model
-* drive.py for driving the car in autonomous model
-* model.h5 containing a trained convolution neural network
-* video.mp4 python generated video of the simulator
+* `model.py` containing the script to create and train the model
+* `drive.py` for driving the car in autonomous model
+* `model.h5` containing a trained convolution neural network
+* `video.mp4` python generated video of the simulator
 
-Recommended simulator settings to run the model:
+Recommended simulator settings:
 * Screen resolution: 1280 x 960 (Windowed)
 * Graphics quality: Fantastic
 
@@ -111,4 +111,4 @@ Evaluation
 
 The NVIDIA deep learning CNN is a very powerful model that requires very minimal data to operate a self driving car successfully.  Given the simplistic design of track 1, it wasn't too difficult to train the model and drive in it successfully.  
 
-However, the model is only as good as how you train it, meaning, with poor data (bad driving behavior) or significant bias in steering angles (having too much data going straight), the model would learn to drive poorly or go straight too often even during turns.  To alleviate this issue, we may implement data processing techniques to aim for a more even distribution of steering angles, throttle control and breaking patterns.  
+However, the model is only as good as how you train it, meaning, with poor data (bad driving behavior) or significant bias in steering angles (having too much data going straight), the model would learn to drive poorly or go straight too often even during turns.  To alleviate this issue, we may implement data processing techniques to aim for a more even distribution of steering angles, throttle control, and breaking patterns.  
